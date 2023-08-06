@@ -8,7 +8,10 @@ import java.util.List;
 @Service
 public interface StudentService {
 
-    public List<Student> getStudents();
+    List<Student> getStudents();
 
+    Student getStudent(long studentId);
+
+    Student addStudent(Student student);
 }
 

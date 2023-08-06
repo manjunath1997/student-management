@@ -23,4 +23,20 @@ public class StudentServiceImpl implements StudentService {
         return studentDummyRepo;
     }
 
+    @Override
+    public Student getStudent(long studentId) {
+        for(Student student: studentDummyRepo) {
+            if (student.getId() == studentId) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Student addStudent(Student student) {
+        studentDummyRepo.add(student);
+        return student;
+    }
+
 }
