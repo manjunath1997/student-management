@@ -1,6 +1,7 @@
 package com.java.studentmanagement;
 
 import com.java.studentmanagement.controller.StudentController;
+import com.java.studentmanagement.repository.StudentRepository;
 import com.java.studentmanagement.service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,13 @@ class ApplicationTests {
 	private StudentController studentController;
 	@Autowired
 	private StudentService studentService;
+	@Autowired
+	private StudentRepository studentRepository;
 
 	@Test
 	public void contextLoads() {
 		assertThat(studentController).isNotNull();
 		assertThat(studentService).isNotNull();
+		assertThat(studentRepository).isNotNull();
 	}
 }

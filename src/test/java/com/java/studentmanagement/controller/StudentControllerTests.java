@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes={StudentController.class, StudentService.class})
 @WebMvcTest(StudentController.class)
-public class StudentControllerTest {
+public class StudentControllerTests {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private MockMvc mockMvc;
@@ -43,6 +43,4 @@ public class StudentControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{\"id\":14,\"name\":\"Manju\",\"email\":\"email\"}]"));
     }
-
-
 }
