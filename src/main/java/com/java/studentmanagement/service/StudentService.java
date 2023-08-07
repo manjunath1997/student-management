@@ -1,15 +1,15 @@
 package com.java.studentmanagement.service;
 
 import com.java.studentmanagement.entity.Student;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface StudentService {
 
     List<Student> getStudents();
 
-    Student getStudent(long studentId);
+    Optional<Student> getStudent(long studentId);
 
     Student addStudent(Student student);
 }
