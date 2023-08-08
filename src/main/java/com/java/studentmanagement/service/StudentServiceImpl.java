@@ -1,42 +1,32 @@
 package com.java.studentmanagement.service;
 
 import com.java.studentmanagement.entity.Student;
+import com.java.studentmanagement.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    List<Student> studentDummyRepo;
-
-    public StudentServiceImpl() {
-        studentDummyRepo = new ArrayList<>();
-        studentDummyRepo.add(new Student(123L, "Amar", "amar@gmail.com"));
-        studentDummyRepo.add(new Student(456L, "Akbar", "akbar@gmail.com"));
-        studentDummyRepo.add(new Student(789L, "Anthony", "anthony@gmail.com"));
-    }
+    @Autowired
+    private StudentRepository studentRepository;
 
     @Override
     public List<Student> getStudents() {
-        return studentDummyRepo;
+        return studentRepository.findAll();
     }
 
     @Override
-    public Student getStudent(long studentId) {
-        for(Student student: studentDummyRepo) {
-            if (student.getId() == studentId) {
-                return student;
-            }
-        }
-        return null;
+    public Optional<Student> getStudent(long studentId) {
+        return studentRepository.findById(studentId);
     }
 
     @Override
     public Student addStudent(Student student) {
-        studentDummyRepo.add(student);
-        return student;
+        return studentRepository.save(student);
     }
 
 }

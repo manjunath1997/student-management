@@ -1,11 +1,9 @@
 package com.java.studentmanagement.controller;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -14,15 +12,14 @@ import static com.java.studentmanagement.controller.HelloController.GREETING_RES
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(HelloController.class)
-public class HelloControllerTest {
+public class HelloControllerTests {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testValidResponseForGreeting() throws Exception
+    public void whenCallGreetingPath_thenReturnGreeting() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
                         .get(GREETING_PATH)
@@ -32,9 +29,9 @@ public class HelloControllerTest {
     }
 
     @Test
-    public void testNotFoundResponseForInvalidPath() throws Exception
+    public void whenCallInvalidPath_thenReturnNotFound() throws Exception
     {
-        String invalidPath = "/some_dummy_path";
+        String invalidPath = "/some_invalid_path";
         mockMvc.perform(MockMvcRequestBuilders
                         .get(invalidPath)
                         .accept(MediaType.APPLICATION_JSON))
